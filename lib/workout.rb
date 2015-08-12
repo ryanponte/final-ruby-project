@@ -1,20 +1,30 @@
-require 'rubygems'
-require 'pry'
-require 'ermahgerd'
-require 'dogeify/all'
-require 'pig_latin'
-require 'moar-lolspeak'
-require_relative 'scraper'
-require_relative 'yoda'
+# require_relative '../config/environment.rb'
+# require 'rubygems'
+# require 'pry'
+# require 'ermahgerd'
+# require 'dogeify/all'
+# require 'pig_latin'
+# require 'moar-lolspeak'
+# require_relative 'scraper'
+# require_relative 'yoda'
 
 class Workout
   attr_reader :input, :sequence
 
   def initialize
+    puts "************************"
+    puts "*** Welcome to Yoga! ***"
+    puts "************************"
     @sequence = []
   end
 
   def create_sequence
+    level = get_level
+    sequence_length?
+    input.times {@sequence << Scraper.yoga_hash[level][rand(0..9)]}
+  end
+
+  def get_level
     puts "B for Beginner | I for Intermediate | A for Advanced"
     answer = gets.chomp.downcase
     case answer
@@ -25,8 +35,6 @@ class Workout
     when "a"
       level = :advanced
     end
-    sequence_length?
-    input.times {@sequence << Scraper.yoga_hash[level][rand(0..9)]}
   end
 
   def sequence_length?
@@ -115,13 +123,3 @@ class Workout
   end
 
 end
-workout = Workout.new
-workout.create_sequence
-workout.iterate_sequence
-
-# @workout.each do |exercise|
-# puts 'Press "N" to continue.'
-# press = gets.input.downcase.chomp
-# if press == "n"
-#
-# end

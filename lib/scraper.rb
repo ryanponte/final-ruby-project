@@ -1,16 +1,12 @@
-require 'nokogiri'
+require_relative '../config/environment.rb'
+# require 'pry'
 require 'open-uri'
-require 'pry'
+require 'nokogiri'
 
 class Scraper
 
   html = open('http://greatist.com/move/common-yoga-poses')
   @@file = Nokogiri::HTML(html)
-
-  # def read_levels
-  #   levels = file.css(".slideshow h3")
-  #   levels = levels.collect {|levels| levels.text}
-  # end
 
   def self.read_titles
     titles = @@file.css(".title-wrapper h4")
