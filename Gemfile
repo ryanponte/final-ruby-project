@@ -1,11 +1,11 @@
 source "https://rubygems.org"
 
-require 'dogeify'
-require 'ermahgerd'
-require 'yodaism'
-require 'pry'
-require 'nokogiri'
-require 'open-uri'
+gem 'dogeify'
+gem 'ermahgerd'
+gem 'yodaism'
+gem 'pry'
+gem 'nokogiri'
+gem 'open-uri'
 
 group :test do
   gem 'rspec'

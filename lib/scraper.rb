@@ -68,8 +68,6 @@ class Scraper
     }
   end
 
-  puts yoga_hash[:beginner].first
-
   # def get_beginner_data(arr)
   #   arr[0..9]
   # end
