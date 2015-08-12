@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 require_relative '../config/environment'
 
+scraper = Scraper.new
+scraper.read_titles
+scraper.read_benefits
+scraper.read_instructions
+scraper.create_yoga_hash(scraper.titles, scraper.instructions, scraper.benefits)
 workout = Workout.new
-workout.create_sequence
+workout.create_sequence(scraper)
 workout.iterate_sequence

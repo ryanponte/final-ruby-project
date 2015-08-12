@@ -1,15 +1,7 @@
-# require_relative '../config/environment.rb'
-# require 'rubygems'
-# require 'pry'
-# require 'ermahgerd'
-# require 'dogeify/all'
-# require 'pig_latin'
-# require 'moar-lolspeak'
-# require_relative 'scraper'
-# require_relative 'yoda'
+require 'pry'
 
 class Workout
-  attr_reader :input, :sequence
+  attr_reader :input, :sequence, :yoga_hash
 
   def initialize
     puts "************************"
@@ -18,14 +10,17 @@ class Workout
     @sequence = []
   end
 
-  def create_sequence
+  def create_sequence(scraped_data)
+    binding.pry
     level = get_level
     sequence_length?
-    input.times {@sequence << Scraper.yoga_hash[level][rand(0..9)]}
+    input.times {@sequence << scraped_data.yoga_hash[level][rand(0..9)]}
   end
 
   def get_level
-    puts "B for Beginner | I for Intermediate | A for Advanced"
+    puts "*======================================================*"
+    puts "| B for Beginner | I for Intermediate | A for Advanced |"
+    puts "*======================================================*"
     answer = gets.chomp.downcase
     case answer
     when "b"
@@ -34,12 +29,19 @@ class Workout
       level = :intermediate
     when "a"
       level = :advanced
+    else
+      get_level
     end
   end
 
   def sequence_length?
     puts "How many exercises?"
     @input = gets.chomp.to_i
+    if @input == 0
+      sequence_length?
+    else
+      @input
+    end
   end
 
   def display_exercise(exercise)
@@ -57,37 +59,48 @@ class Workout
 
   def iterate_sequence
     @sequence.each do |exercise|
+      display_exercise(exercise)
       choice = get_input
-      case choice
-      when "n"
-        puts "Next"
-        display_exercise(exercise)
-      when "b"
-        puts "Benefits"
-        display_benefits(exercise)
-      when "e"
-        puts "ERMAHGERD!!!11!1!!"
-        ermahgerd(exercise)
-      when "d"
-        puts "wow dogeify!"
-        dogeify(exercise)
-      when "y"
-        yoda
-      when "p"
-        puts "Igpay Atinlay"
-        pig_latin(exercise)
-      when "l"
-        puts "i can haz lolspeak?"
-        lolcat(exercise)
-      when "x"
-        exit
+      until choice == "n"
+        case choice
+        when "b"
+          puts "Benefits"
+          display_benefits(exercise)
+          choice = get_input
+        when "e"
+          puts "ERMAHGERD!!!11!1!!"
+          ermahgerd(exercise)
+          choice = get_input
+        when "d"
+          puts "so dogeify. wow"
+          dogeify(exercise)
+          choice = get_input
+        when "y"
+          yoda
+          choice = get_input
+        when "p"
+          puts "Igpay Atinlay"
+          pig_latin(exercise)
+          choice = get_input
+        when "l"
+          puts "i can haz lolspeak?"
+          lolcat(exercise)
+          choice = get_input
+        when "x"
+          exit
+        end
       end
+      puts "Next"
+      next
     end
   end
 
   def get_input
+    puts "*=================================================================*"
     puts "| N for Next | B for Benefits  | E for ERMAHGERD | L for LOLspeak |"
+    puts "*=================================================================*"
     puts "| Y for Yoda | P for Pig Latin | D for Dogeify   | X for Exit     |"
+    puts "*=================================================================*"
     puts "Enter a command:"
     gets.chomp.downcase
   end
