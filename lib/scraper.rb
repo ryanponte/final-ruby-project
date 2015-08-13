@@ -132,7 +132,7 @@ class Scraper
       hash[:title] = titles[count]
       hash[:instruction] = instructions[count]
       hash[:benefit] = benefits[count]
-      yoga_hash[:beginner] << hash
+      yoga_hash[:intermediate] << hash
       count += 1
     end
   end
@@ -144,7 +144,7 @@ class Scraper
       hash[:title] = titles[count]
       hash[:instruction] = instructions[count]
       hash[:benefit] = benefits[count]
-      yoga_hash[:beginner] << hash
+      yoga_hash[:advanced] << hash
       count += 1
     end
   end
@@ -156,5 +156,4 @@ class Scraper
     create_advanced(titles, instructions, benefits)
     yoga_hash
   end
-
 end

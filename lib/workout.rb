@@ -1,7 +1,5 @@
-require 'pry'
-
 class Workout
-  attr_reader :input, :sequence, :yoga_hash
+  attr_accessor :input, :sequence, :yoga_hash
 
   def initialize
     puts "************************"
@@ -10,11 +8,10 @@ class Workout
     @sequence = []
   end
 
-  def create_sequence(scraped_data)
-    binding.pry
+  def create_sequence(scraper)
     level = get_level
     sequence_length?
-    input.times {@sequence << scraped_data.yoga_hash[level][rand(0..9)]}
+    input.times {(@sequence << scraper[level][rand(0..9)])}
   end
 
   def get_level
@@ -46,11 +43,11 @@ class Workout
 
   def display_exercise(exercise)
       puts exercise[:title]
-      puts exercise[:instructions]
+      puts exercise[:instruction]
   end
 
   def return_instructions(exercise)
-    exercise[:instructions]
+    exercise[:instruction]
   end
 
   def return_title(exercise)
@@ -106,7 +103,8 @@ class Workout
   end
 
   def display_benefits(exercise)
-    puts exercise[:benefits]
+    puts exercise[:title]
+    puts exercise[:benefit]
   end
 
   def ermahgerd(exercise)
