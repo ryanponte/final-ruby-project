@@ -1,6 +1,6 @@
 # Yoga Randomizer
 
-# What is Yoga Randomizerr?
+### What is Yoga Randomizerr?
 
 Yoga Randomizer takes well known yoga poses and creates custom length randomized workouts. Users can read instructions for each pose as well as learn about the benefits each pose provides -- all from the command line! In addition, Yoga Randomizer allows users to translate the names and instructions of each pose to several popular meme languages. Finally, Yoga Randomizer allows users to receive motivation from the greatest Yogi/Jedi of all time by calling up Master Yoda to speak wisely during their workout.
 
@@ -23,7 +23,7 @@ In order to provide users with the powerful command line Yoga tool that is Yoga 
 
 ```
 
-## Next Steps
+### Next Steps
 
 While Yoga Randomizer is a groundbreaking new open source workout product that promises to alter the bodies of web develpers the world over, we at Dryane Inc. believe that our programs can always be better. To that end, below is a list of improvements we intend to bring to Yoga Randomizer in future updates.
 
