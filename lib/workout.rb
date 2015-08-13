@@ -84,10 +84,11 @@ class Workout
           lolcat(exercise)
           choice = get_input
         when "x"
+          puts "Namaste!"
           exit
         end
       end
-      puts "Next"
+      puts "********"
       next
     end
   end

@@ -9,3 +9,4 @@ scraper = scraper.create_yoga_hash(scraper.titles, scraper.instructions, scraper
 workout = Workout.new
 workout.create_sequence(scraper)
 workout.iterate_sequence
+puts "Namaste!"
