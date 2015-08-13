@@ -158,4 +158,6 @@ scraper.read_titles
 scraper.read_instructions
 scraper.read_benefits
 
+scraper.create_yoga_hash(scraper.titles, scraper.instructions, scraper.benefits)
+
 binding.pry
